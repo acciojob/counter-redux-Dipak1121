@@ -2,10 +2,23 @@
 import React from "react";
 import './../styles/App.css';
 
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux"
+
+import { increaseCount, decreseCount } from "../actions/counterActions";
+
 const App = () => {
+
+  const dispatch = useDispatch();
+
+  const counter = useSelector(state => state);
+  console.log(counter);
+
   return (
     <div>
-        {/* Do not remove the main div */}
+        <h1>Counter: {counter}</h1>
+        <button onClick={()=>dispatch(increaseCount())}> Increase </button>
+        <button onClick={()=>dispatch(decreseCount())}> Decrease </button>
     </div>
   )
 }
